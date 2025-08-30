@@ -33,6 +33,9 @@ tar -xzf clang-archive && rm -f clang-archive
 cd -
 
 echo "==> Env setup"
+export ANDROID_BUILD_TOP="${ANDROID_BUILD_TOP:-$PWD}"
+export ANDROID_KEY_PATH="${ANDROID_KEY_PATH:-$ANDROID_BUILD_TOP/vendor/lineage-priv/keys}"
+mkdir -p "$ANDROID_KEY_PATH"
 source build/envsetup.sh
 
 echo "==> Lunch: axion xaga userdebug gms core"
