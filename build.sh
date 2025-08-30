@@ -24,6 +24,13 @@ rm -rf hardware/mediatek hardware/xiaomi
 echo "==> Repo sync"
 /opt/crave/resync.sh
 
+echo "==> Clone clang"
+mkdir -p prebuilts/clang/kernel/linux-x86/clang-r574158
+cd prebuilts/clang/kernel/linux-x86/clang-r574158
+wget -O clang-archive https://github.com/bachnxuan/aosp_clang_mirror/releases/download/clang-r574158-13996053/clang-r574158.tar.gz
+tar -xzf clang-archive && rm -f clang-archive 
+cd -
+
 echo "==> Env setup"
 . build/envsetup.sh
 
