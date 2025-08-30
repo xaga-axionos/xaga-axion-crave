@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # AxionOS build script for Crave
-set -euo pipefail
+set -e
 
 export BUILD_USERNAME=xaga-axionos
 export BUILD_HOSTNAME=crave
@@ -22,6 +22,7 @@ rm -rf kernel/xiaomi/mt6895
 rm -rf hardware/mediatek hardware/xiaomi
 
 echo "==> Repo sync"
+
 /opt/crave/resync.sh
 
 echo "==> Clone clang"
@@ -32,7 +33,7 @@ tar -xzf clang-archive && rm -f clang-archive
 cd -
 
 echo "==> Env setup"
-. build/envsetup.sh
+source build/envsetup.sh
 
 echo "==> Lunch: axion xaga userdebug gms core"
 axion xaga userdebug gms core
